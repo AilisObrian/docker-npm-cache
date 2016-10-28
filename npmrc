@@ -1,1 +1,2 @@
-registry=http://localhost:4873/
+registry=https://localhost:4873/
+strict-ssl=false

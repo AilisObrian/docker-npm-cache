@@ -2,9 +2,23 @@ version: '2'
 services:
   npm-cache:
     image: keyvanfatehi/sinopia
-    ports:
-      - "4873:4873"
+    networks:
+      - npm-cache
     volumes:
       - "./config.yaml:/opt/sinopia/config.yaml:ro"
       - "./storage:/opt/sinopia/storage"
+  caddy:
+    image: zzrot/alpine-caddy
+    ports:
+      - "4873:4873"
+    volumes:
+      - "./Caddyfile:/etc/Caddyfile"
+    networks:
+      - npm-cache
+    links:
+      - npm-cache
+    depends_on:
+      - npm-cache
+networks:
+  npm-cache:
 
