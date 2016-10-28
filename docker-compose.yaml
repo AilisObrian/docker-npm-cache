@@ -1,0 +1,10 @@
+version: '2'
+services:
+  npm-cache:
+    image: keyvanfatehi/sinopia
+    ports:
+      - "4873:4873"
+    volumes:
+      - "./config.yaml:/opt/sinopia/config.yaml:ro"
+      - "./storage:/opt/sinopia/storage"
+
